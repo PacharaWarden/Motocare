@@ -187,9 +187,14 @@ class _registerState extends State<register> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState?.save();
-                          print(
-                              "Email = ${profile.email} password = ${profile.password}");
-                          formKey.currentState?.reset();
+                          if (profile.password == profile.repass) {
+                            print(
+                                "name = ${profile.name} Email = ${profile.email} password = ${profile.password} repass=${profile.repass}");
+                            formKey.currentState?.reset();
+                          } else {
+                            RequiredValidator(errorText: "พาสเวิดไม่ตรงกัน");
+                            alertDialog(context);
+                          }
                         }
                       },
                     ),
@@ -200,6 +205,30 @@ class _registerState extends State<register> {
           ),
         ),
       ),
+    );
+  }
+
+  alertDialog(BuildContext context) {
+    // This is the ok button
+    Widget ok = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    // show the alert dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("ระวัง!"),
+          content: Text("กรุณาใส่พาสเวิดให้ตรง!"),
+          actions: [
+            ok,
+          ],
+          elevation: 5,
+        );
+      },
     );
   }
 }

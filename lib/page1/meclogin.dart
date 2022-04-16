@@ -1,9 +1,10 @@
+import 'package:changrode/bar/tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:changrode/model/profile.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:changrode/model/profile.dart';
 import 'package:changrode/page1/machanicregis.dart';
-import 'package:changrode/page1/choose.dart';
+import 'package:changrode/bar/tabbar.dart';
 
 class meclogin extends StatefulWidget {
   const meclogin({Key? key}) : super(key: key);
@@ -153,7 +154,7 @@ class _mecloginState extends State<meclogin> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return choose();
+                          return tabbar();
                         }));
                       },
                       child: const Text(

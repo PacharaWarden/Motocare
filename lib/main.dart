@@ -1,5 +1,4 @@
 import 'package:changrode/page1/Home.dart';
-import 'package:changrode/page1/choose.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,6 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo', theme: ThemeData(), home: choose());
+        title: 'Flutter Demo', theme: ThemeData(), home: Homescreen());
   }
 }
