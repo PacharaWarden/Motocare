@@ -1,6 +1,3 @@
-import 'package:changrode/tappage/screen1.dart';
-import 'package:changrode/tappage/search.dart';
-import 'package:changrode/tappage/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:changrode/bar/tabbar.dart';
 
@@ -13,11 +10,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    page1(),
-    search(),
-    settingScreen()
-  ];
+  static const List<Widget> _widgetOptions = <Widget>[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +25,11 @@ class _HomepageState extends State<Homepage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Search',
+            label: 'Business',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'Setting',
+            label: 'School',
           ),
         ],
         currentIndex: _selectedIndex,

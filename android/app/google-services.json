@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "680818891673",
+    "project_id": "motocare-8574d",
+    "storage_bucket": "motocare-8574d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680818891673:android:8fcd4c74d447c692845108",
+        "android_client_info": {
+          "package_name": "com.example.changrode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680818891673-g8m59toegm3j1mgos3ohj4h2lg63cfgg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.changrode",
+            "certificate_hash": "d0c7a4fcba74c6adbb6138ae457e5b39db4735c9"
+          }
+        },
+        {
+          "client_id": "680818891673-moe352orp3cf1v38570vqnhiu5agmq3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5FpePi2rYec1bxWwwIzJ8aKvBLvEfkXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680818891673-moe352orp3cf1v38570vqnhiu5agmq3t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

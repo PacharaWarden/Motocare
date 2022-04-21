@@ -1,9 +1,14 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore
+// ignore: file_names
+// ignore: file_names
+// ignore: file_names, file_names
+// ignore_for_file: prefer_const_constructors, duplicate_ignore, file_names
 
 import 'package:changrode/page1/Login.dart';
-import 'package:changrode/page1/register.dart';
+
+// ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
 import 'package:changrode/page1/meclogin.dart';
 
@@ -27,19 +32,6 @@ class Homescreen extends StatelessWidget {
               image: NetworkImage(
                   "https://cdn.discordapp.com/attachments/919218109334814750/963394971463987240/unknown.png"),
             ),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(30, 100, 30, 20),
-          width: double.infinity,
-          child: ElevatedButton.icon(
-            icon: Icon(Icons.add),
-            label: Text("สร้างบัญชีผู้ใช้", style: TextStyle(fontSize: 20)),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return register();
-              }));
-            },
           ),
         ),
         Container(

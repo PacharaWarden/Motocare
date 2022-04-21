@@ -1,7 +1,18 @@
+// ignore: file_names
+// ignore_for_file: file_names, duplicate_ignore
+
+import 'package:changrode/bar/tabbar.dart';
+import 'package:changrode/tappage/screen1.dart';
 import 'package:flutter/material.dart';
 import 'package:changrode/model/profile.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+// ignore: duplicate_import
 import 'package:changrode/model/profile.dart';
+import 'package:get/get.dart';
+// ignore: unused_import
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../login_control.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -11,128 +22,94 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final formKey = GlobalKey<FormState>();
-  Profile profile = Profile();
+  final controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("เข้าสู่ระบบ"),
+        title: const Text("เข้าสู่ระบบ"),
         backgroundColor: Colors.black,
       ),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Form(
-            key: formKey,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: SizedBox(
-                        height: 200,
-                        width: 200,
-                        child: Image.network(
-                            "https://cdn.discordapp.com/attachments/919218109334814750/963394971463987240/unknown.png")),
-                  ),
-                  Center(
-                      child: Text(
-                    "เข้าสู่ระบบสำหรับผู้ใช้บริการ",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.yellow,
-                        fontWeight: FontWeight.w600),
-                  )),
-                  SizedBox(height: 25),
-                  Theme(
-                    data: Theme.of(context)
-                        .copyWith(splashColor: Colors.transparent),
-                    child: TextFormField(
-                      style:
-                          TextStyle(fontSize: 22.0, color: Color(0xFFbdc6cf)),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'อีเมล',
-                        contentPadding: const EdgeInsets.only(
-                            left: 14.0, bottom: 8.0, top: 8.0),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                      ),
-                      validator: MultiValidator([
-                        RequiredValidator(errorText: "กรุณาป้อนอีเมลด้วยครับ"),
-                        EmailValidator(errorText: "รูปแบบอีเมลไม่ถูกต้อง")
-                      ]),
-                      keyboardType: TextInputType.emailAddress,
-                      onSaved: (String? email) {
-                        profile.email = email;
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Theme(
-                    data: Theme.of(context)
-                        .copyWith(splashColor: Colors.transparent),
-                    child: TextFormField(
-                      style: TextStyle(
-                          fontSize: 22.0,
-                          color: Color.fromARGB(255, 249, 251, 251)),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'พาสเวิด',
-                        contentPadding: const EdgeInsets.only(
-                            left: 14.0, bottom: 8.0, top: 8.0),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                      ),
-                      validator: RequiredValidator(
-                          errorText: "กรุณาป้อนรหัสผ่านด้วยครับ"),
-                      obscureText: true,
-                      onSaved: (String? password) {
-                        profile.password = password;
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                      icon: Icon(Icons.login),
-                      label: Text(
-                        "Login",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          primary: Color.fromARGB(255, 236, 167, 19)),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
+      // ignore: avoid_unnecessary_container
+      body: SingleChildScrollView(
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 100,
             ),
-          ),
+            Center(
+              child: SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: Image.network(
+                      "https://media.discordapp.net/attachments/918195000943198239/966636592938745896/unknown.png")),
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            Center(
+              child: Obx(() {
+                if (controller.googleAccount.value == null)
+                  // ignore: curly_braces_in_flow_control_structures
+                  return buildLoginButton();
+                else
+                  return gotoHomepage();
+              }),
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  FloatingActionButton buildLoginButton() {
+    return FloatingActionButton.extended(
+      onPressed: () {
+        controller.login();
+      },
+      icon: Image.network(
+        'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png',
+        height: 32,
+        width: 32,
+      ),
+      label: const Text("Sing in with Google"),
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.black,
+    );
+  }
+
+  gotoHomepage() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const Homepage()),
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  Column BuildProfileView() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CircleAvatar(
+          backgroundImage:
+              Image.network(controller.googleAccount.value?.photoUrl ?? '')
+                  .image,
+          radius: 100,
+        ),
+        Text(
+          controller.googleAccount.value?.displayName ?? '',
+        ),
+        Text(controller.googleAccount.value?.email ?? ''),
+        ActionChip(
+          avatar: const Icon(Icons.logout),
+          label: const Text('logout'),
+          onPressed: () {
+            controller.logout();
+          },
+        )
+      ],
     );
   }
 }

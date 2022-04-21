@@ -2,10 +2,13 @@ import 'package:changrode/bar/tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:changrode/model/profile.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+// ignore: duplicate_import
 import 'package:changrode/model/profile.dart';
 import 'package:changrode/page1/machanicregis.dart';
+// ignore: duplicate_import
 import 'package:changrode/bar/tabbar.dart';
 
+// ignore: camel_case_types
 class meclogin extends StatefulWidget {
   const meclogin({Key? key}) : super(key: key);
 
@@ -13,6 +16,7 @@ class meclogin extends StatefulWidget {
   State<meclogin> createState() => _mecloginState();
 }
 
+// ignore: camel_case_types
 class _mecloginState extends State<meclogin> {
   final formKey = GlobalKey<FormState>();
   Profile profile = Profile();
@@ -22,9 +26,10 @@ class _mecloginState extends State<meclogin> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("เข้าสู่ระบบสำหรับช่าง"),
+        title: const Text("เข้าสู่ระบบสำหรับช่าง"),
         backgroundColor: Colors.black,
       ),
+      // ignore: avoid_unnecessary_containers
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -41,7 +46,7 @@ class _mecloginState extends State<meclogin> {
                         child: Image.network(
                             "https://cdn.discordapp.com/attachments/919218109334814750/963394971463987240/unknown.png")),
                   ),
-                  Center(
+                  const Center(
                       child: Text(
                     "เข้าสู่ระบบสำหรับช่าง",
                     style: TextStyle(
@@ -49,13 +54,13 @@ class _mecloginState extends State<meclogin> {
                         color: Colors.yellow,
                         fontWeight: FontWeight.w600),
                   )),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   Theme(
                     data: Theme.of(context)
                         .copyWith(splashColor: Colors.transparent),
                     child: TextFormField(
-                      style:
-                          TextStyle(fontSize: 22.0, color: Color(0xFFbdc6cf)),
+                      style: const TextStyle(
+                          fontSize: 22.0, color: Color(0xFFbdc6cf)),
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
@@ -63,11 +68,11 @@ class _mecloginState extends State<meclogin> {
                         contentPadding: const EdgeInsets.only(
                             left: 14.0, bottom: 8.0, top: 8.0),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                       ),
@@ -81,14 +86,14 @@ class _mecloginState extends State<meclogin> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Theme(
                     data: Theme.of(context)
                         .copyWith(splashColor: Colors.transparent),
                     child: TextFormField(
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 22.0,
                           color: Color.fromARGB(255, 249, 251, 251)),
                       decoration: InputDecoration(
@@ -98,11 +103,11 @@ class _mecloginState extends State<meclogin> {
                         contentPadding: const EdgeInsets.only(
                             left: 14.0, bottom: 8.0, top: 8.0),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                       ),
@@ -114,19 +119,19 @@ class _mecloginState extends State<meclogin> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
-                        icon: Icon(Icons.login),
-                        label: Text(
+                        icon: const Icon(Icons.login),
+                        label: const Text(
                           "Login",
                           style: TextStyle(fontSize: 20),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: Color.fromARGB(255, 236, 167, 19)),
+                            primary: const Color.fromARGB(255, 236, 167, 19)),
                         onPressed: () {}),
                   ),
                   Center(
@@ -135,7 +140,7 @@ class _mecloginState extends State<meclogin> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return mecregis();
+                          return const mecregis();
                         }));
                       },
                       child: const Text(
@@ -154,7 +159,7 @@ class _mecloginState extends State<meclogin> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return tabbar();
+                          return const Homepage();
                         }));
                       },
                       child: const Text(

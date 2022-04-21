@@ -2,6 +2,7 @@ import 'package:changrode/model/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
+// ignore: camel_case_types
 class mecregis extends StatefulWidget {
   const mecregis({Key? key}) : super(key: key);
 
@@ -9,6 +10,7 @@ class mecregis extends StatefulWidget {
   State<mecregis> createState() => _mecregisState();
 }
 
+// ignore: camel_case_types
 class _mecregisState extends State<mecregis> {
   final formKey = GlobalKey<FormState>();
   Profile profile = Profile();
@@ -17,10 +19,11 @@ class _mecregisState extends State<mecregis> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
+        title: const Text("Register"),
         backgroundColor: Colors.black,
       ),
       backgroundColor: Colors.black,
+      // ignore: avoid_unnecessary_containers
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -37,7 +40,7 @@ class _mecregisState extends State<mecregis> {
                         child: Image.network(
                             "https://cdn.discordapp.com/attachments/919218109334814750/963394971463987240/unknown.png")),
                   ),
-                  Center(
+                  const Center(
                     child: Text(
                       "สมัครเป็นช่าง",
                       style: TextStyle(
@@ -46,13 +49,13 @@ class _mecregisState extends State<mecregis> {
                           fontWeight: FontWeight.w600),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   Theme(
                     data: Theme.of(context)
                         .copyWith(splashColor: Colors.transparent),
                     child: TextFormField(
-                      style:
-                          TextStyle(fontSize: 22.0, color: Color(0xFFbdc6cf)),
+                      style: const TextStyle(
+                          fontSize: 22.0, color: Color(0xFFbdc6cf)),
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
@@ -60,11 +63,11 @@ class _mecregisState extends State<mecregis> {
                         contentPadding: const EdgeInsets.only(
                             left: 14.0, bottom: 8.0, top: 8.0),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                       ),
@@ -74,15 +77,15 @@ class _mecregisState extends State<mecregis> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   Theme(
                     data: Theme.of(context)
                         .copyWith(splashColor: Colors.transparent),
                     child: TextFormField(
-                      style:
-                          TextStyle(fontSize: 22.0, color: Color(0xFFbdc6cf)),
+                      style: const TextStyle(
+                          fontSize: 22.0, color: Color(0xFFbdc6cf)),
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
@@ -90,11 +93,11 @@ class _mecregisState extends State<mecregis> {
                         contentPadding: const EdgeInsets.only(
                             left: 14.0, bottom: 8.0, top: 8.0),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                       ),
@@ -108,28 +111,28 @@ class _mecregisState extends State<mecregis> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   Theme(
                     data: Theme.of(context)
                         .copyWith(splashColor: Colors.transparent),
                     child: TextFormField(
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 22.0,
                           color: Color.fromARGB(255, 9, 18, 18)),
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: Color.fromARGB(255, 249, 244, 244),
+                        fillColor: const Color.fromARGB(255, 249, 244, 244),
                         hintText: 'พาสเวิด',
                         contentPadding: const EdgeInsets.only(
                             left: 14.0, bottom: 8.0, top: 8.0),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                       ),
@@ -141,14 +144,14 @@ class _mecregisState extends State<mecregis> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   Theme(
                     data: Theme.of(context)
                         .copyWith(splashColor: Colors.transparent),
                     child: TextFormField(
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 22.0,
                           color: Color.fromARGB(255, 4, 22, 22)),
                       decoration: InputDecoration(
@@ -158,11 +161,11 @@ class _mecregisState extends State<mecregis> {
                         contentPadding: const EdgeInsets.only(
                             left: 14.0, bottom: 8.0, top: 8.0),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                       ),
@@ -174,19 +177,20 @@ class _mecregisState extends State<mecregis> {
                       },
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color.fromARGB(255, 236, 167, 19)),
-                      child: Text(
+                          primary: const Color.fromARGB(255, 236, 167, 19)),
+                      child: const Text(
                         "ลงทะเบียน",
                         style: TextStyle(fontSize: 20, color: Colors.black),
                       ),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState?.save();
+                          // ignore: avoid_print
                           print(
                               "Email = ${profile.email} password = ${profile.password}");
                           formKey.currentState?.reset();
