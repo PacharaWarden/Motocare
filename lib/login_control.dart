@@ -1,5 +1,4 @@
 // ignore: unused_import
-import 'package:changrode/page1/log2.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -12,7 +11,7 @@ class LoginController extends GetxController {
     googleAccount.value = await _GoogleSignin.signIn();
   }
 
-  logout() async {
+  signoutt() async {
     googleAccount.value = await _GoogleSignin.signOut();
   }
 }

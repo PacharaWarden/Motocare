@@ -1,14 +1,19 @@
 import 'package:changrode/bar/tabbar.dart';
+import 'package:changrode/page1/Login.dart';
+import 'package:changrode/tappage/screen1.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:changrode/model/profile.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 // ignore: duplicate_import
 import 'package:changrode/model/profile.dart';
-import 'package:changrode/page1/machanicregis.dart';
-// ignore: duplicate_import
-import 'package:changrode/bar/tabbar.dart';
+import 'package:get/get.dart';
+// ignore: unused_import
+import 'package:google_sign_in/google_sign_in.dart';
 
-// ignore: camel_case_types
+import '../login_control.dart';
+
 class meclogin extends StatefulWidget {
   const meclogin({Key? key}) : super(key: key);
 
@@ -16,168 +21,96 @@ class meclogin extends StatefulWidget {
   State<meclogin> createState() => _mecloginState();
 }
 
-// ignore: camel_case_types
 class _mecloginState extends State<meclogin> {
+  final controller = Get.put(LoginController());
   final formKey = GlobalKey<FormState>();
-  Profile profile = Profile();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text("เข้าสู่ระบบสำหรับช่าง"),
+        title: const Text("เข้าสู่ระบสำหรับช่าง"),
         backgroundColor: Colors.black,
       ),
-      // ignore: avoid_unnecessary_containers
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Form(
-            key: formKey,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: SizedBox(
-                        height: 200,
-                        width: 200,
-                        child: Image.network(
-                            "https://cdn.discordapp.com/attachments/919218109334814750/963394971463987240/unknown.png")),
+      // ignore: avoid_unnecessary_container
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: (Image.network(
+                "https://cdn.discordapp.com/attachments/915989715096846406/967724791958241320/LOGO1.png",
+                height: 300,
+                width: 300,
+              )),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: SizedBox(
+                child: Text(
+                  "เข้าสู่ระบบสำหรับช่าง",
+                  style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: 25,
                   ),
-                  const Center(
-                      child: Text(
-                    "เข้าสู่ระบบสำหรับช่าง",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.yellow,
-                        fontWeight: FontWeight.w600),
-                  )),
-                  const SizedBox(height: 25),
-                  Theme(
-                    data: Theme.of(context)
-                        .copyWith(splashColor: Colors.transparent),
-                    child: TextFormField(
-                      style: const TextStyle(
-                          fontSize: 22.0, color: Color(0xFFbdc6cf)),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'อีเมล',
-                        contentPadding: const EdgeInsets.only(
-                            left: 14.0, bottom: 8.0, top: 8.0),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                      ),
-                      validator: MultiValidator([
-                        RequiredValidator(errorText: "กรุณาป้อนอีเมลด้วยครับ"),
-                        EmailValidator(errorText: "รูปแบบอีเมลไม่ถูกต้อง")
-                      ]),
-                      keyboardType: TextInputType.emailAddress,
-                      onSaved: (String? email) {
-                        profile.email = email;
-                      },
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Theme(
-                    data: Theme.of(context)
-                        .copyWith(splashColor: Colors.transparent),
-                    child: TextFormField(
-                      style: const TextStyle(
-                          fontSize: 22.0,
-                          color: Color.fromARGB(255, 249, 251, 251)),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'พาสเวิด',
-                        contentPadding: const EdgeInsets.only(
-                            left: 14.0, bottom: 8.0, top: 8.0),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                      ),
-                      validator: RequiredValidator(
-                          errorText: "กรุณาป้อนรหัสผ่านด้วยครับ"),
-                      obscureText: true,
-                      onSaved: (String? password) {
-                        profile.password = password;
-                      },
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                        icon: const Icon(Icons.login),
-                        label: const Text(
-                          "Login",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            primary: const Color.fromARGB(255, 236, 167, 19)),
-                        onPressed: () {}),
-                  ),
-                  Center(
-                    child: TextButton(
-                      style: TextButton.styleFrom(),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const mecregis();
-                        }));
-                      },
-                      child: const Text(
-                        'สมัครเป็นช่าง',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.yellow,
-                        ),
-                      ),
-                    ),
-                  ),
-                  // ฝากกกกกกกกกกกกกกกกกกกกกกกกกกกกก
-                  Center(
-                    child: TextButton(
-                      style: TextButton.styleFrom(),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const Homepage();
-                        }));
-                      },
-                      child: const Text(
-                        'ไปหน้าแอป ทำเป็นเดี๋ยวลบ',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.yellow,
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  /// ถึงนี้นะ อิอิ
-                ],
+                ),
               ),
             ),
-          ),
+            SizedBox(
+              height: 30,
+            ),
+            SafeArea(
+              child: TextButton(
+                child: Text(
+                  "กลับไปหน้าแรก",
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const LoginScreen();
+                  }));
+                },
+              ),
+            ),
+            Center(
+              child: (buildLoginButton()),
+            ),
+          ],
         ),
+      ),
+    );
+  }
+
+  FloatingActionButton buildLoginButton() {
+    return FloatingActionButton.extended(
+      onPressed: () async {
+        await controller.login();
+        if (controller.googleAccount.value?.email != null) {
+          gotoHomepage();
+        } else {
+          await controller.signoutt();
+          setState(() {});
+        }
+      },
+      icon: Image.network(
+        'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png',
+        height: 32,
+        width: 32,
+      ),
+      label: const Text("Sing in with Google"),
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.black,
+    );
+  }
+
+  gotoHomepage() {
+    // SchedulerBinding.instance?.addPostFrameCallback((_) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => Homepage(),
       ),
     );
   }

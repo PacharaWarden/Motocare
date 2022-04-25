@@ -1,10 +1,12 @@
 // ignore: file_names
 // ignore_for_file: file_names, duplicate_ignore
-
 import 'package:changrode/bar/tabbar.dart';
+import 'package:changrode/page1/Meclogin.dart';
 import 'package:changrode/tappage/screen1.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:changrode/model/profile.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 // ignore: duplicate_import
 import 'package:changrode/model/profile.dart';
@@ -23,6 +25,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final controller = Get.put(LoginController());
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,31 +36,52 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.black,
       ),
       // ignore: avoid_unnecessary_container
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Center(
+              child: (Image.network(
+                "https://cdn.discordapp.com/attachments/915989715096846406/967724791958241320/LOGO1.png",
+                height: 300,
+                width: 300,
+              )),
+            ),
             SizedBox(
-              height: 100,
+              height: 10,
             ),
             Center(
               child: SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Image.network(
-                      "https://media.discordapp.net/attachments/918195000943198239/966636592938745896/unknown.png")),
+                child: Text(
+                  "เข้าสู่ระบบสำหรับบุคลทั่วไป",
+                  style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
             ),
             SizedBox(
-              height: 100,
+              height: 30,
+            ),
+            SafeArea(
+              child: TextButton(
+                child: Text(
+                  "เข้าสู่ระบบสำหรับช่าง",
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const meclogin();
+                  }));
+                },
+              ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             Center(
-              child: Obx(() {
-                if (controller.googleAccount.value == null)
-                  // ignore: curly_braces_in_flow_control_structures
-                  return buildLoginButton();
-                else
-                  return gotoHomepage();
-              }),
+              child: (buildLoginButton()),
             ),
           ],
         ),
@@ -67,8 +91,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   FloatingActionButton buildLoginButton() {
     return FloatingActionButton.extended(
-      onPressed: () {
-        controller.login();
+      onPressed: () async {
+        await controller.login();
+        if (controller.googleAccount.value?.email != null) {
+          gotoHomepage();
+        } else {
+          await controller.signoutt();
+          setState(() {});
+        }
       },
       icon: Image.network(
         'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png',
@@ -82,34 +112,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   gotoHomepage() {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const Homepage()),
-    );
-  }
-
-  // ignore: non_constant_identifier_names
-  Column BuildProfileView() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        CircleAvatar(
-          backgroundImage:
-              Image.network(controller.googleAccount.value?.photoUrl ?? '')
-                  .image,
-          radius: 100,
-        ),
-        Text(
-          controller.googleAccount.value?.displayName ?? '',
-        ),
-        Text(controller.googleAccount.value?.email ?? ''),
-        ActionChip(
-          avatar: const Icon(Icons.logout),
-          label: const Text('logout'),
-          onPressed: () {
-            controller.logout();
-          },
-        )
-      ],
+    // SchedulerBinding.instance?.addPostFrameCallback((_) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => Homepage(),
+      ),
     );
   }
 }
