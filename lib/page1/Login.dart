@@ -5,11 +5,11 @@ import 'package:changrode/page1/Meclogin.dart';
 import 'package:changrode/tappage/screen1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:changrode/model/profile.dart';
+import 'package:changrode/model/user.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 // ignore: duplicate_import
-import 'package:changrode/model/profile.dart';
+import 'package:changrode/model/user.dart';
 import 'package:get/get.dart';
 // ignore: unused_import
 import 'package:google_sign_in/google_sign_in.dart';
@@ -26,6 +26,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final controller = Get.put(LoginController());
   final formKey = GlobalKey<FormState>();
+  dynamic user;
 
   @override
   Widget build(BuildContext context) {
@@ -93,8 +94,23 @@ class _LoginScreenState extends State<LoginScreen> {
     return FloatingActionButton.extended(
       onPressed: () async {
         await controller.login();
-        if (controller.googleAccount.value?.email != null) {
-          gotoHomepage();
+        if (controller.googleAccount.value!.email != null) {
+          user = await Checkuser(controller.googleAccount.value!.email);
+          if (user == null) {
+            
+            //if (data.uEmail == null)
+
+            await regisuser(
+                controller.googleAccount.value!.email,
+                controller.googleAccount.value!.displayName.toString(),
+                controller.googleAccount.value!.photoUrl.toString());
+            gotoHomepage();
+            // } else {
+            //   gotoHomepage();
+            // }
+          } else {
+            gotoHomepage();
+          }
         } else {
           await controller.signoutt();
           setState(() {});
@@ -120,4 +136,11 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+  // Future<void> check(String email) async {
+  //   user = (await Checkuser(email));
+  //   if (user != null) {
+  //     //context.read<UserProvider>().setUser(user);
+  //   }
+  // }
 }

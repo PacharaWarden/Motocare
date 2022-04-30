@@ -3,11 +3,11 @@ import 'package:changrode/page1/Login.dart';
 import 'package:changrode/tappage/screen1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:changrode/model/profile.dart';
+import 'package:changrode/model/user.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 // ignore: duplicate_import
-import 'package:changrode/model/profile.dart';
+import 'package:changrode/model/user.dart';
 import 'package:get/get.dart';
 // ignore: unused_import
 import 'package:google_sign_in/google_sign_in.dart';
