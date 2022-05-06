@@ -24,6 +24,7 @@ class meclogin extends StatefulWidget {
 class _mecloginState extends State<meclogin> {
   final controller = Get.put(LoginController());
   final formKey = GlobalKey<FormState>();
+  dynamic user;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,8 +88,23 @@ class _mecloginState extends State<meclogin> {
     return FloatingActionButton.extended(
       onPressed: () async {
         await controller.login();
-        if (controller.googleAccount.value?.email != null) {
-          gotoHomepage();
+        if (controller.googleAccount.value!.email != null) {
+          user = await Checkuser(controller.googleAccount.value!.email);
+          if (user == null) {
+            //if (data.uEmail == null)
+
+            // await regisuser(
+            //     controller.googleAccount.value!.email,
+            //     controller.googleAccount.value!.displayName.toString(),
+            //     controller.googleAccount.value!.photoUrl.toString(),
+            //     "MECHANIC");
+            // gotoHomepage();
+            // } else {
+            //   gotoHomepage();
+            // }
+          } else {
+            gotoHomepage();
+          }
         } else {
           await controller.signoutt();
           setState(() {});

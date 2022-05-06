@@ -62,12 +62,13 @@ Future<dynamic> Checkuser(String email) async {
   }
 }
 
-Future<User> regisuser(String email, String name, String display) async {
+Future<User> regisuser(String email, String name, String display,String role) async {
   final String path = "http://192.168.2.33:8000/regisuser";
   final body = jsonEncode({
     "uEmail": email,
     "uName": name,
     "uDisplay": display,
+    "role": role,
   });
   final res = await http.post(Uri.parse(path),
       body: body, headers: {'Content-Type': 'application/json', 'Accept': '/'});

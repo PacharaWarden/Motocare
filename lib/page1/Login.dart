@@ -103,7 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
             await regisuser(
                 controller.googleAccount.value!.email,
                 controller.googleAccount.value!.displayName.toString(),
-                controller.googleAccount.value!.photoUrl.toString());
+                controller.googleAccount.value!.photoUrl.toString(),
+                "USER");
             gotoHomepage();
             // } else {
             //   gotoHomepage();
