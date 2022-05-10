@@ -9,35 +9,35 @@ Machanic welcomeFromJson(String str) => Machanic.fromJson(json.decode(str));
 String welcomeToJson(Machanic data) => json.encode(data.toJson());
 
 class Machanic {
-    Machanic({
-        required this.id,
-        required this.idCard,
-        required this.mfName,
-        required this.mlName,
-        required this.workPlaceImage,
-        required this.faceImage,
-        required this.workPlace,
-        required this.userId,
-        required this.locationId,
-        required this.createdAt,
-        required this.updatedAt,
-        required this.location,
-    });
+  Machanic({
+    required this.id,
+    required this.idCard,
+    required this.mfName,
+    required this.mlName,
+    required this.workPlaceImage,
+    required this.faceImage,
+    required this.workPlace,
+    required this.userId,
+    required this.locationId,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.location,
+  });
 
-    int id;
-    String idCard;
-    String mfName;
-    String mlName;
-    String workPlaceImage;
-    String faceImage;
-    String workPlace;
-    int userId;
-    int locationId;
-    DateTime createdAt;
-    DateTime updatedAt;
-    Location location;
+  int id;
+  String idCard;
+  String mfName;
+  String mlName;
+  String workPlaceImage;
+  String faceImage;
+  String workPlace;
+  int userId;
+  int locationId;
+  DateTime createdAt;
+  DateTime updatedAt;
+  Location location;
 
-    factory Machanic.fromJson(Map<String, dynamic> json) => Machanic(
+  factory Machanic.fromJson(Map<String, dynamic> json) => Machanic(
         id: json["id"],
         idCard: json["idCard"],
         mfName: json["mfName"],
@@ -50,9 +50,9 @@ class Machanic {
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
         location: Location.fromJson(json["location"]),
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "idCard": idCard,
         "mfName": mfName,
@@ -65,14 +65,14 @@ class Machanic {
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
         "location": location.toJson(),
-    };
+      };
 }
 
 Future<List<Machanic>> Getmachanic() async {
-  final String path = "http://192.168.2.33:8000/getMachanic";
+  final String path = "http://192.168.2.34:8000/getMachanic";
   final res = await http.get(Uri.parse(path));
   if (res.statusCode == 200) {
-   Iterable l = json.decode(res.body);
+    Iterable l = json.decode(res.body);
     List<Machanic> data = l.map((g) => Machanic.fromJson(g)).toList();
     return data;
   } else if (res.statusCode == 500) {

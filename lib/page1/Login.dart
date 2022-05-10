@@ -96,15 +96,16 @@ class _LoginScreenState extends State<LoginScreen> {
         await controller.login();
         if (controller.googleAccount.value!.email != null) {
           user = await Checkuser(controller.googleAccount.value!.email);
+          print(user);
           if (user == null) {
-            
-            //if (data.uEmail == null)
+            // if (data.uEmail == null)
 
             await regisuser(
                 controller.googleAccount.value!.email,
                 controller.googleAccount.value!.displayName.toString(),
                 controller.googleAccount.value!.photoUrl.toString(),
                 "USER");
+
             gotoHomepage();
             // } else {
             //   gotoHomepage();
