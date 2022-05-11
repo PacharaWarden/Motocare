@@ -1,11 +1,9 @@
-import 'package:changrode/bar/tabbar.dart';
-import 'package:changrode/page1/Login.dart';
-import 'package:changrode/tappage/screen1.dart';
-import 'package:flutter/cupertino.dart';
+// ignore: file_names
+// ignore_for_file: file_names, duplicate_ignore
+import 'package:changrode/login/meclogin.dart';
+import 'package:changrode/navbar/user_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:changrode/model/user.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 // ignore: duplicate_import
 import 'package:changrode/model/user.dart';
 import 'package:get/get.dart';
@@ -14,25 +12,23 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../login_control.dart';
 
-class meclogin extends StatefulWidget {
-  const meclogin({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<meclogin> createState() => _mecloginState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _mecloginState extends State<meclogin> {
+class _LoginScreenState extends State<LoginScreen> {
   final controller = Get.put(LoginController());
   final formKey = GlobalKey<FormState>();
   dynamic user;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text("เข้าสู่ระบสำหรับช่าง"),
-        backgroundColor: Colors.black,
-      ),
+      
       // ignore: avoid_unnecessary_container
       body: SafeArea(
         child: Column(
@@ -45,13 +41,13 @@ class _mecloginState extends State<meclogin> {
                 width: 300,
               )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Center(
+            const Center(
               child: SizedBox(
                 child: Text(
-                  "เข้าสู่ระบบสำหรับช่าง",
+                  "เข้าสู่ระบบสำหรับบุคคลทั่วไป",
                   style: TextStyle(
                     color: Colors.orange,
                     fontSize: 25,
@@ -59,21 +55,24 @@ class _mecloginState extends State<meclogin> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             SafeArea(
               child: TextButton(
-                child: Text(
-                  "กลับไปหน้าแรก",
+                child: const Text(
+                  "เข้าสู่ระบบสำหรับช่าง",
                   style: TextStyle(fontSize: 20.0),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const LoginScreen();
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return const meclogin();
                   }));
                 },
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             Center(
               child: (buildLoginButton()),
@@ -90,15 +89,17 @@ class _mecloginState extends State<meclogin> {
         await controller.login();
         if (controller.googleAccount.value!.email != null) {
           user = await Checkuser(controller.googleAccount.value!.email);
+          print(user);
           if (user == null) {
-            //if (data.uEmail == null)
+            // if (data.uEmail == null)
 
-            // await regisuser(
-            //     controller.googleAccount.value!.email,
-            //     controller.googleAccount.value!.displayName.toString(),
-            //     controller.googleAccount.value!.photoUrl.toString(),
-            //     "MECHANIC");
-            // gotoHomepage();
+            await regisuser(
+                controller.googleAccount.value!.email,
+                controller.googleAccount.value!.displayName.toString(),
+                controller.googleAccount.value!.photoUrl.toString(),
+                "USER");
+
+            gotoHomepage();
             // } else {
             //   gotoHomepage();
             // }
@@ -115,7 +116,7 @@ class _mecloginState extends State<meclogin> {
         height: 32,
         width: 32,
       ),
-      label: const Text("Sing in with Google"),
+      label: const Text("Sign in with Google"),
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
     );
@@ -126,8 +127,15 @@ class _mecloginState extends State<meclogin> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (BuildContext context) => Homepage(),
+        builder: (BuildContext context) => const Homepage(),
       ),
     );
   }
+
+  // Future<void> check(String email) async {
+  //   user = (await Checkuser(email));
+  //   if (user != null) {
+  //     //context.read<UserProvider>().setUser(user);
+  //   }
+  // }
 }

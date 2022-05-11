@@ -1,6 +1,6 @@
 // ignore: unused_import
-import 'package:changrode/page1/Home.dart';
-import 'package:changrode/page1/Login.dart';
+import 'package:changrode/navbar/mec_nav.dart';
+import 'package:changrode/login/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

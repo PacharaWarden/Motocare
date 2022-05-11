@@ -1,8 +1,10 @@
-import 'package:changrode/tappage/screen1.dart';
-import 'package:changrode/tappage/search.dart';
-import 'package:changrode/tappage/setting.dart';
+import 'package:changrode/user/homeuser/home.dart';
+import 'package:changrode/user/set/profile_user.dart';
+import 'package:changrode/user/search/search.dart';
+import 'package:changrode/mechanic/setting/setting.dart';
+import 'package:changrode/user/homeuser/home.dart';
+import 'package:changrode/user/set/setuser.dart';
 import 'package:flutter/material.dart';
-import 'package:changrode/bar/tabbar.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -16,7 +18,7 @@ class _HomepageState extends State<Homepage> {
   static const List<Widget> _widgetOptions = <Widget>[
     page1(),
     search(),
-    settingScreen()
+    Setuser()
   ];
   @override
   Widget build(BuildContext context) {
@@ -27,15 +29,20 @@ class _HomepageState extends State<Homepage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home,
+            color: Colors.orange,
+                size: 35,),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search,
+                size: 35,),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.settings,
+            color: Colors.red,
+            size: 35,),
             label: 'Setting',
           ),
         ],

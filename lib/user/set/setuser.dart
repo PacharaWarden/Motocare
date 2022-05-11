@@ -1,20 +1,19 @@
-import 'dart:ffi';
 
-import 'package:changrode/page1/Login.dart';
-import 'package:changrode/page1/registerDetail.dart';
+import 'package:changrode/login/Login.dart';
+import 'package:changrode/user/set/profile_user.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../login_control.dart';
-import 'package:flutter/src/widgets/navigator.dart';
+import '../../login_control.dart';
 
-class settingScreen extends StatefulWidget {
-  const settingScreen({Key? key}) : super(key: key);
+class Setuser extends StatefulWidget {
+  const Setuser({Key? key}) : super(key: key);
 
   @override
-  State<settingScreen> createState() => _settingScreenState();
+  State<Setuser> createState() => _SetuserState();
 }
 
-class _settingScreenState extends State<settingScreen> {
+class _SetuserState extends State<Setuser> {
+
   final controller = Get.put(LoginController());
   @override
   void initState() {
@@ -30,17 +29,22 @@ class _settingScreenState extends State<settingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 165, 165, 165),
+        appBar: AppBar(
+          backgroundColor: Colors.yellow[900],
+          title: const Text(' Setting '),
+        ),
         body: Center(
             child: Column(children: <Widget>[
-      SizedBox(
+      const SizedBox(
         height: 120,
       ),
       SafeArea(
         child: Center(
           child: Container(
-            margin: EdgeInsets.all(25),
+            margin: const EdgeInsets.all(25),
             child: OutlineButton(
-              child: Text(
+              child: const Text(
                 "แก้ไขข้อมูลส่วนตัว",
                 style: TextStyle(fontSize: 20.0),
               ),
@@ -49,14 +53,14 @@ class _settingScreenState extends State<settingScreen> {
                   borderRadius: BorderRadius.circular(15)),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const detailupdate();
+                  return Edituser();
                 }));
               },
             ),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       Container(
@@ -64,7 +68,7 @@ class _settingScreenState extends State<settingScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(),
+          const Center(),
           Center(
             child: CircleAvatar(
               backgroundImage:

@@ -1,8 +1,7 @@
-// ignore: file_names
-// ignore_for_file: file_names, duplicate_ignore
-import 'package:changrode/bar/tabbar.dart';
-import 'package:changrode/page1/Meclogin.dart';
-import 'package:changrode/tappage/screen1.dart';
+import 'package:changrode/navbar/mec_nav.dart';
+import 'package:changrode/login/Login.dart';
+import 'package:changrode/login/registerDetail.dart';
+//import 'package:changrode/tappage/screen1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:changrode/model/user.dart';
@@ -16,26 +15,22 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../login_control.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class meclogin extends StatefulWidget {
+  const meclogin({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<meclogin> createState() => _mecloginState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _mecloginState extends State<meclogin> {
   final controller = Get.put(LoginController());
   final formKey = GlobalKey<FormState>();
   dynamic user;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text("เข้าสู่ระบบ"),
-        backgroundColor: Colors.black,
-      ),
+      
       // ignore: avoid_unnecessary_container
       body: SafeArea(
         child: Column(
@@ -48,13 +43,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 300,
               )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Center(
+            const Center(
               child: SizedBox(
                 child: Text(
-                  "เข้าสู่ระบบสำหรับบุคลทั่วไป",
+                  "เข้าสู่ระบบสำหรับช่าง",
                   style: TextStyle(
                     color: Colors.orange,
                     fontSize: 25,
@@ -62,23 +57,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             SafeArea(
               child: TextButton(
-                child: Text(
-                  "เข้าสู่ระบบสำหรับช่าง",
+                child: const Text(
+                  "เข้าสู่ระบบสำหรับผู้ใช้งานทั่วไป",
                   style: TextStyle(fontSize: 20.0),
                 ),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const meclogin();
+                    return const LoginScreen();
                   }));
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Center(
@@ -96,17 +91,15 @@ class _LoginScreenState extends State<LoginScreen> {
         await controller.login();
         if (controller.googleAccount.value!.email != null) {
           user = await Checkuser(controller.googleAccount.value!.email);
-          print(user);
           if (user == null) {
-            // if (data.uEmail == null)
+            //if (data.uEmail == null)
 
-            await regisuser(
-                controller.googleAccount.value!.email,
-                controller.googleAccount.value!.displayName.toString(),
-                controller.googleAccount.value!.photoUrl.toString(),
-                "USER");
-
-            gotoHomepage();
+            // await regisuser(
+            //     controller.googleAccount.value!.email,
+            //     controller.googleAccount.value!.displayName.toString(),
+            //     controller.googleAccount.value!.photoUrl.toString(),
+            //     "MECHANIC");
+            // gotoHomepage();
             // } else {
             //   gotoHomepage();
             // }
@@ -123,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
         height: 32,
         width: 32,
       ),
-      label: const Text("Sing in with Google"),
+      label: const Text("Sign in with Google"),
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
     );
@@ -134,15 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (BuildContext context) => Homepage(),
+        builder: (BuildContext context) => const detailupdate(),
       ),
     );
   }
-
-  // Future<void> check(String email) async {
-  //   user = (await Checkuser(email));
-  //   if (user != null) {
-  //     //context.read<UserProvider>().setUser(user);
-  //   }
-  // }
 }

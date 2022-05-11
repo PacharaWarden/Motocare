@@ -21,10 +21,10 @@ class _searchState extends State<search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text("เลือกช่าง"),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.yellow.shade900,
         ),
         body: SafeArea(
           child: Column(
@@ -54,7 +54,7 @@ class _searchState extends State<search> {
                             },
                           );
                         }
-                        return Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       })),

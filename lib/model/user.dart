@@ -51,7 +51,7 @@ class User {
 }
 
 Future<dynamic> Checkuser(String email) async {
-  final String path = "http://192.168.2.34:8000/login/$email";
+  final String path = "http://192.168.1.111:8000/login/$email";
   final res = await http.get(Uri.parse(path));
   if (res.statusCode == 200) {
     return User.fromJson(jsonDecode(res.body));
@@ -64,7 +64,7 @@ Future<dynamic> Checkuser(String email) async {
 
 Future<User> regisuser(
     String email, String name, String display, String role) async {
-  final String path = "http://192.168.2.34:8000/regisuser";
+  const String path = "http://192.168.1.111:8000/regisuser";
   final body = jsonEncode({
     "uEmail": email,
     "uName": name,
