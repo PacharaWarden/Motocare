@@ -41,23 +41,3 @@ class Appointments {
         "jobDescription": jobDescription,
       };
 }
-
-Future<Appointments> createappointment(DateTime date, String time,
-    String latitude, String longitude, String jobDescription) async {
-  const String path = "http://192.168.1.37:8000/createappointment";
-  final body = jsonEncode({
-    "date": date.toIso8601String(),
-    "time": time,
-    "jobDescription": jobDescription,
-    "latitude": latitude,
-    "longitude": longitude,
-  });
- 
-  final res = await http.post(Uri.parse(path),
-      body: body, headers: {'Content-Type': 'application/json', 'Accept': '/'});
-  if (res.statusCode == 200) {
-    return Appointments.fromJson(jsonDecode(res.body));
-  } else {
-    throw Exception("False to create");
-  }
-}

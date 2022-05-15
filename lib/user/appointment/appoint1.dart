@@ -1,8 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:convert';
+
+import 'package:changrode/model/appointment.dart';
 import 'package:changrode/user/appointment/appoint2.dart';
 import 'package:changrode/user/appointment/appoint_review.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Appointment extends StatefulWidget {
   const Appointment({Key? key}) : super(key: key);
@@ -14,6 +18,38 @@ class Appointment extends StatefulWidget {
 class _AppointmentState extends State<Appointment> {
   DateTime date = DateTime(2022, 01, 01);
   TimeOfDay time = const TimeOfDay(hour: 00, minute: 00);
+
+  TextEditingController location = new TextEditingController();
+  TextEditingController jobdetail = new TextEditingController();
+
+  Future createappointment() async {
+    String showtime = '${time.hour}/${time.minute}';
+
+    const String path = "http://192.168.1.37:8000/createappointment";
+
+    Map<String, dynamic> args = {
+      "latitude": "123.123",
+      "longitude": "123.123",
+      "date": "2022-04-30 10:23:19",
+      "time": "10:23:19",
+      "jobDescription": jobdetail.text,
+      "userAppointment": {"userId": 1, "status": "USER_APPOINT"}
+    };
+    print(date.toIso8601String());
+    var body = jsonEncode(args);
+
+    final res = await http.post(Uri.parse(path),
+        body: body,
+        headers: {'Content-Type': 'application/json', 'Accept': '/'});
+    print(res.body);
+    if (res.statusCode == 200) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return Appointed();
+      }));
+    } else {
+      throw Exception("False to create");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +118,6 @@ class _AppointmentState extends State<Appointment> {
                                 " เบอร์ติดต่อ ",
                                 style: TextStyle(fontSize: 20),
                               ),
-                              
-                              
                               Container(
                                 padding: const EdgeInsets.only(right: 120),
                               ),
@@ -105,11 +139,8 @@ class _AppointmentState extends State<Appointment> {
                                   ),
                                 ],
                               ),
-                              
                             ],
-                            
                           ),
-                          
                         ),
                         Container(
                           padding: const EdgeInsets.all(7),
@@ -257,6 +288,7 @@ class _AppointmentState extends State<Appointment> {
                           padding: const EdgeInsets.all(5),
                         ),
                         TextFormField(
+                          controller: location,
                           decoration: InputDecoration(
                             filled: false,
                             fillColor: Colors.white,
@@ -353,6 +385,7 @@ class _AppointmentState extends State<Appointment> {
                           ],
                         ),
                         TextFormField(
+                          controller: jobdetail,
                           decoration: InputDecoration(
                             filled: false,
                             fillColor: Colors.white,
@@ -378,10 +411,7 @@ class _AppointmentState extends State<Appointment> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15)),
                                 onPressed: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return Appointed();
-                                  }));
+                                  createappointment();
                                 },
                               ),
                             ),
