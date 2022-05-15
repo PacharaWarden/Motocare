@@ -1,4 +1,6 @@
 
+// ignore_for_file: deprecated_member_use
+
 import 'package:changrode/login/Login.dart';
 import 'package:changrode/user/set/profile_user.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +55,7 @@ class _SetuserState extends State<Setuser> {
                   borderRadius: BorderRadius.circular(15)),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return Edituser();
+                  return const Edituser();
                 }));
               },
             ),

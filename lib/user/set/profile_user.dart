@@ -74,7 +74,7 @@ class _EdituserState extends State<Edituser> {
                           label: const Text("ยืนยัน",
                               style: TextStyle(fontSize: 20)),
                           onPressed: () {
-                            Navigator.push(context,
+                            Navigator.pushReplacement(context,
                                 MaterialPageRoute(builder: (context) {
                               return const Homepage();
                             }));

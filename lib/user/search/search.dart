@@ -1,4 +1,5 @@
 import 'package:changrode/model/machanic.dart';
+import 'package:changrode/user/appointment/appoint1.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,8 +44,14 @@ class _searchState extends State<search> {
                             itemCount: value.length,
                             itemBuilder: (context, index) {
                               return ListTile(
+                                
                                   title: TextButton.icon(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return Appointment();
+                            }));
+                                      },
                                       icon: Image.network(
                                         'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png',
                                         height: 32,

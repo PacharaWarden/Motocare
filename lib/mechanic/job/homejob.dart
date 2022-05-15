@@ -8,14 +8,14 @@ class jobhome extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 165, 165, 165),
+      backgroundColor: const Color.fromARGB(255, 189, 189, 189),
       body: Container(
         width: 500,
         height: 400,
         margin: const EdgeInsets.only(top: 0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(40),
-          color: const Color.fromARGB(255, 183, 101, 0)
+          color: Color.fromARGB(255, 226, 124, 0)
         ),
         
       ) 

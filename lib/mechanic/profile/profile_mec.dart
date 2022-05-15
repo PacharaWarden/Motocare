@@ -28,7 +28,7 @@ class _profile_mecState extends State<profile_mec> {
           margin: const EdgeInsets.only(top: 0),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40),
-              color: const Color.fromARGB(255, 183, 101, 0)),
+              color: const Color.fromARGB(255, 226, 124, 0)),
           child: Column(
             children: [
               Icon(Icons.person_pin, size: 200, color: Colors.yellow.shade800),
