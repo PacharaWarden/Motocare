@@ -14,7 +14,7 @@ class Homepage_mec extends StatefulWidget {
 class _Homepage_mecState extends State<Homepage_mec> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
-    const jobhome(),
+    jobhome(),
     profile_mec(),
     const settingScreen(),
   ];

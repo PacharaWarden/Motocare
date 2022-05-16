@@ -1,8 +1,14 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:changrode/mechanic/job/job_page2.dart';
+import 'package:changrode/navbar/mec_nav.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
 class Job_one extends StatelessWidget {
-  const Job_one({Key? key}) : super(key: key);
+  Job_one({Key? key}) : super(key: key);
+  DateTime date = DateTime(2022, 01, 01);
+  TimeOfDay time = const TimeOfDay(hour: 00, minute: 00);
 
   @override
   Widget build(BuildContext context) {
@@ -39,48 +45,58 @@ class Job_one extends StatelessWidget {
                         const SizedBox(
                           height: 40,
                         ),
-                        const Text(
-                          " สถานที่ที่ต้องให้บริการ ",
-                          style: TextStyle(fontSize: 18),
+                        Row(
+                          children: const [
+                            Text(
+                              " สถานที่ที่ต้องไปให้บริการ ",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
                         ),
                         TextFormField(
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40)),
-                            hintText: 'ชื่อ',
+                                borderRadius: BorderRadius.circular(0)),
+                            hintText: ' Location ',
                           ),
                         ),
                         Container(
                           padding: const EdgeInsets.all(10),
                         ),
-                        const Text(
-                          " วันเวลาที่นัดหมาย ",
-                          style: TextStyle(fontSize: 18),
+                        Row(
+                          children: const [
+                            Text(
+                              " วันเวลาที่นัดหมาย ",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
                         ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40)),
-                              hintText: 'เบอร์'),
+                        Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.all(10),
+                            ),
+                            Text(
+                              '${date.year}:${date.month}:${date.day}',
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(right: 50),
+                            ),
+                          ],
                         ),
                         Container(
                           padding: const EdgeInsets.all(10),
                         ),
-                        SizedBox(
-                          width: 500,
-                          height: 30,
-                          child: Column(
-                            children: const [
-                              Text(
-                                " รายละเอียดงาน ",
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ],
-                          ),
+                        Row(
+                          children: const [
+                            Text(
+                              " รายละเอียดงาน ",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
                         ),
                         TextFormField(
                           decoration: InputDecoration(
@@ -93,16 +109,59 @@ class Job_one extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(10),
                         ),
-                        const SizedBox(
-                          width: 300,
-                          height: 40,
+                        SafeArea(
+                          child: Center(
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 0),
+                              child: OutlineButton(
+                                child: const Text(
+                                  "          ยืนยันการรับงาน          ",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Color.fromARGB(255, 24, 167, 5)),
+                                ),
+                                splashColor:
+                                    const Color.fromARGB(255, 244, 155, 54),
+                                disabledBorderColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                onPressed: () {
+                                  Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const Job_two();
+                                  }));
+                                },
+                              ),
+                            ),
+                          ),
                         ),
-                        
-                      
-
+                        SafeArea(
+                          child: Center(
+                            child: Container(
+                              margin: const EdgeInsets.all(0),
+                              child: OutlineButton(
+                                child: const Text(
+                                  "                ไม่รับงาน                ",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Color.fromARGB(255, 255, 0, 0)),
+                                ),
+                                splashColor:
+                                    const Color.fromARGB(255, 187, 6, 6),
+                                disabledBorderColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                onPressed: () {
+                                  Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const Homepage_mec();
+                                  }));
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
-                      
-                    )
-                    ))));
+                    )))));
   }
 }

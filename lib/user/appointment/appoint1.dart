@@ -23,20 +23,21 @@ class _AppointmentState extends State<Appointment> {
   TextEditingController jobdetail = new TextEditingController();
 
   Future createappointment() async {
-    String showtime = '${time.hour}/${time.minute}';
+    String showtime = '${time.hour}:${time.minute}';
 
-    const String path = "http://192.168.1.37:8000/createappointment";
+    const String path = "http://192.168.1.111:8000/createappointment";
 
     Map<String, dynamic> args = {
       "latitude": "123.123",
       "longitude": "123.123",
-      "date": "2022-04-30 10:23:19",
-      "time": "10:23:19",
+      "date": date.toString(),
+      "time": showtime,
       "jobDescription": jobdetail.text,
       "userAppointment": {"userId": 1, "status": "USER_APPOINT"}
     };
     print(date.toIso8601String());
     var body = jsonEncode(args);
+    print(args);
 
     final res = await http.post(Uri.parse(path),
         body: body,
@@ -316,7 +317,7 @@ class _AppointmentState extends State<Appointment> {
                         Row(
                           children: [
                             Text(
-                              '${date.year}/${date.month}/${date.day}/',
+                              '${date.year}:${date.month}:${date.day}',
                               style: const TextStyle(fontSize: 18),
                             ),
                             Container(

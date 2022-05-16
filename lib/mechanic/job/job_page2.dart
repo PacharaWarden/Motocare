@@ -11,8 +11,6 @@ class Job_two extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.yellow[900],
           title: const Text(' ยกเลิกงาน '),
-          
-          
         ),
         body: SafeArea(
             child: SingleChildScrollView(
@@ -61,8 +59,6 @@ class Job_two extends StatelessWidget {
                           " เบอร์ติดต่อ ",
                           style: TextStyle(fontSize: 18),
                         ),
-                        
-                        
                         Container(
                           padding: const EdgeInsets.all(10),
                         ),
@@ -73,14 +69,11 @@ class Job_two extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
                               color: Colors.yellow.shade800),
-                              
                           child: Row(
-                            
                             children: const [
                               Text(
                                 " เสร็จสิ้นภาระกิจ ",
                                 style: TextStyle(fontSize: 20),
-                                
                               ),
                             ],
                           ),
@@ -88,7 +81,6 @@ class Job_two extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(10),
                         ),
-                        
                       ],
                     )))));
   }
