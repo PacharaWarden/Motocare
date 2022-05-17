@@ -2,7 +2,12 @@ import 'package:changrode/navbar/mec_nav.dart';
 import 'package:flutter/material.dart';
 
 class detailupdate extends StatefulWidget {
-  const detailupdate({Key? key}) : super(key: key);
+  final int userId;
+
+  const detailupdate({
+    Key? key,
+    required this.userId,
+  }) : super(key: key);
 
   @override
   State<detailupdate> createState() => _detailupdateState();
@@ -178,7 +183,7 @@ class _detailupdateState extends State<detailupdate> {
                           onPressed: () {
                             Navigator.pushReplacement(context,
                                 MaterialPageRoute(builder: (context) {
-                              return const Homepage_mec();
+                              return Homepage_mec(userId: widget.userId);
                             }));
                           },
                         ),

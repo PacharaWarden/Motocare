@@ -30,7 +30,7 @@ class _page1State extends State<page1> {
   Future createappointment() async {
     String showtime = '${time.hour}:${time.minute}';
 
-    const String path = "http://192.168.1.111:8000/createappointment";
+    const String path = "http://192.168.17.186:8000/createappointment";
 
     Map<String, dynamic> args = {
       "date": date.toString(),
@@ -46,10 +46,14 @@ class _page1State extends State<page1> {
         children: [
           Container(
             width: 500,
-            height: 375,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: const Color.fromARGB(255, 226, 124, 0)),
+            height: 400,
+            padding: const EdgeInsets.all(20.0),
+            margin: const EdgeInsets.only(top: 0),
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(40.0),
+                    bottomRight: Radius.circular(40.0)),
+                color: Color.fromARGB(255, 226, 124, 0)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -89,7 +93,7 @@ class _page1State extends State<page1> {
                             Column(
                               children: [
                                 const Padding(
-                                  padding: EdgeInsets.only(bottom: 135),
+                                  padding: EdgeInsets.only(bottom: 130),
                                 ),
                                 Image.network(
                                   'https://cdn.discordapp.com/attachments/975031843344748556/975808446966427768/1234.png',
@@ -100,7 +104,7 @@ class _page1State extends State<page1> {
                               ],
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 80),
+                              padding: EdgeInsets.only(left: 40),
                             ),
                             Image.network(
                               'https://cdn.discordapp.com/attachments/531143215508881411/968111279405432922/LOGO1.png',
@@ -116,9 +120,6 @@ class _page1State extends State<page1> {
                 ),
               ],
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(0),
           ),
           Container(
             width: 500,

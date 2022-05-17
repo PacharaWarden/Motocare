@@ -30,7 +30,7 @@ class _mecloginState extends State<meclogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      
+
       // ignore: avoid_unnecessary_container
       body: SafeArea(
         child: Column(
@@ -104,7 +104,7 @@ class _mecloginState extends State<meclogin> {
             //   gotoHomepage();
             // }
           } else {
-            gotoHomepage();
+            gotoHomepage(user.id);
           }
         } else {
           await controller.signoutt();
@@ -122,12 +122,12 @@ class _mecloginState extends State<meclogin> {
     );
   }
 
-  gotoHomepage() {
+  gotoHomepage(dynamic userId) {
     // SchedulerBinding.instance?.addPostFrameCallback((_) {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (BuildContext context) => const detailupdate(),
+        builder: (BuildContext context) => detailupdate(userId: userId),
       ),
     );
   }

@@ -144,7 +144,7 @@ class Edit_profile extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.pushReplacement(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return const Homepage_mec();
+                                    return const Homepage_mec(userId: 6);
                                   }));
                                 },
                               ),

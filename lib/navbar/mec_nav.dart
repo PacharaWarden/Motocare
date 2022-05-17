@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
 class Homepage_mec extends StatefulWidget {
-  const Homepage_mec({Key? key}) : super(key: key);
+  final int userId;
+  const Homepage_mec({Key? key, required this.userId}) : super(key: key);
 
   @override
   State<Homepage_mec> createState() => _Homepage_mecState();
@@ -13,14 +14,14 @@ class Homepage_mec extends StatefulWidget {
 
 class _Homepage_mecState extends State<Homepage_mec> {
   int _selectedIndex = 0;
-  final List<Widget> _widgetOptions = <Widget>[
-    jobhome(),
-    profile_mec(),
-    const settingScreen(),
-  ];
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _widgetOptions = <Widget>[
+      jobhome(userId: widget.userId),
+      profile_mec(),
+      const settingScreen(),
+    ];
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

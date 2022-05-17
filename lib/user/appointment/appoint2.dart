@@ -14,11 +14,13 @@ class Appointed extends StatefulWidget {
 }
 
 class _AppointedState extends State<Appointed> {
+  DateTime date = DateTime(2022, 01, 01);
+  TimeOfDay time = const TimeOfDay(hour: 00, minute: 00);
   TextEditingController location = new TextEditingController();
   TextEditingController jobdetail = new TextEditingController();
 
   Future createappointment() async {
-    const String path = "http://192.168.1.111:8000/createappointment";
+    const String path = "http://192.168.17.186:8000/createappointment";
 
     Map<String, dynamic> args = {
       "jobDescription": jobdetail.toString(),

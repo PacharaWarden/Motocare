@@ -23,7 +23,7 @@ class _AppointmentState extends State<Appointment> {
   Future createappointment() async {
     String showtime = '${time.hour}:${time.minute}';
 
-    const String path = "http://192.168.1.111:8000/createappointment";
+    const String path = "http://192.168.17.186:8000/createappointment";
 
     Map<String, dynamic> args = {
       "latitude": "123.123",
@@ -161,7 +161,7 @@ class _AppointmentState extends State<Appointment> {
                                     onPressed: () {
                                       Navigator.push(context,
                                           MaterialPageRoute(builder: (context) {
-                                        return Appointed();
+                                        return const Appointed();
                                       }));
                                     },
                                   ),
