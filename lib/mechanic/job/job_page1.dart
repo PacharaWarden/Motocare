@@ -5,8 +5,8 @@ import 'package:changrode/navbar/mec_nav.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class Job_one extends StatelessWidget {
-  Job_one({Key? key}) : super(key: key);
+class JobOne extends StatelessWidget {
+  JobOne({Key? key}) : super(key: key);
   DateTime date = DateTime(2022, 01, 01);
   TimeOfDay time = const TimeOfDay(hour: 00, minute: 00);
 

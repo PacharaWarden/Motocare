@@ -2,9 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:changrode/model/appointment.dart';
 import 'package:changrode/user/appointment/appoint2.dart';
-import 'package:changrode/user/appointment/appoint_review.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -33,7 +31,8 @@ class _AppointmentState extends State<Appointment> {
       "date": date.toString(),
       "time": showtime,
       "jobDescription": jobdetail.text,
-      "userAppointment": {"userId": 1, "status": "USER_APPOINT"}
+      "userAppointment": {"userId": 1, "status": "USER_APPOINT"},
+      "location": location.toString()
     };
     print(date.toIso8601String());
     var body = jsonEncode(args);
@@ -45,7 +44,7 @@ class _AppointmentState extends State<Appointment> {
     print(res.body);
     if (res.statusCode == 200) {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Appointed();
+        return const Appointed();
       }));
     } else {
       throw Exception("False to create");
@@ -111,16 +110,44 @@ class _AppointmentState extends State<Appointment> {
                         Container(
                           padding: const EdgeInsets.all(20),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Icon(Icons.phone,
-                                  size: 25, color: Colors.yellow.shade800),
-                              const Text(
-                                " เบอร์ติดต่อ ",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(right: 120),
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(Icons.phone,
+                                          size: 25,
+                                          color: Colors.yellow.shade800),
+                                      const Text(
+                                        " เบอร์ติดต่อ ",
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      Container(
+                                        padding:
+                                            const EdgeInsets.only(right: 120),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            "   092-7408283 ",
+                                            style: TextStyle(fontSize: 20),
+                                          ),
+                                          Container(
+                                            padding: const EdgeInsets.only(
+                                                right: 120),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -134,7 +161,7 @@ class _AppointmentState extends State<Appointment> {
                                     onPressed: () {
                                       Navigator.push(context,
                                           MaterialPageRoute(builder: (context) {
-                                        return Review_User();
+                                        return Appointed();
                                       }));
                                     },
                                   ),
@@ -407,7 +434,7 @@ class _AppointmentState extends State<Appointment> {
                                       color: Color.fromARGB(255, 165, 107, 0)),
                                 ),
                                 highlightColor:
-                                    Color.fromARGB(255, 244, 155, 54),
+                                    const Color.fromARGB(255, 244, 155, 54),
                                 disabledBorderColor: Colors.black,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15)),

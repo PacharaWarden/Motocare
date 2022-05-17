@@ -70,11 +70,7 @@ class _profile_mecState extends State<profile_mec> {
           padding: const EdgeInsets.all(20),
           child: Row(
             children: [
-              Icon(
-                Icons.history,
-                size: 40,
-                color: Colors.yellow.shade800
-              ),
+              Icon(Icons.history, size: 40, color: Colors.yellow.shade800),
               const Text(
                 " ประวัติการใช้บริการ ",
                 style: TextStyle(fontSize: 20),
@@ -93,7 +89,6 @@ class _profile_mecState extends State<profile_mec> {
             ],
           ),
         ),
-        
         Container(
           padding: const EdgeInsets.all(20),
           child: Row(
@@ -116,7 +111,6 @@ class _profile_mecState extends State<profile_mec> {
               ),
             ],
           ),
-          
         ),
       ],
     ));

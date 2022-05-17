@@ -1,3 +1,6 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:changrode/navbar/mec_nav.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
@@ -39,43 +42,112 @@ class Job_two extends StatelessWidget {
                         const SizedBox(
                           height: 40,
                         ),
-                        const Text(
-                          " สถานที่ที่ต้องให้บริการ ",
-                          style: TextStyle(fontSize: 18),
+                        Row(
+                          children: const [
+                            Text(
+                              " สถานที่ที่ต้องไปให้บริการ ",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
                         ),
                         TextFormField(
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40)),
-                            hintText: 'ชื่อ',
+                                borderRadius: BorderRadius.circular(0)),
+                            hintText: ' Location ',
                           ),
                         ),
                         Container(
                           padding: const EdgeInsets.all(10),
                         ),
-                        const Text(
-                          " เบอร์ติดต่อ ",
-                          style: TextStyle(fontSize: 18),
+                        Row(
+                          children: [
+                            Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(Icons.phone,
+                                        size: 25,
+                                        color: Colors.yellow.shade800),
+                                    const Text(
+                                      " เบอร์ติดต่อ ",
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    Container(
+                                      padding:
+                                          const EdgeInsets.only(right: 120),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          "   092-7408283 ",
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                        Container(
+                                          padding:
+                                              const EdgeInsets.only(right: 120),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.local_phone,
+                                    size: 60,
+                                    color: Colors.yellow.shade800,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return const Homepage_mec();
+                                    }));
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                         Container(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(20),
                         ),
-                        Container(
-                          width: 250,
-                          height: 40,
-                          margin: const EdgeInsets.only(top: 0),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-                              color: Colors.yellow.shade800),
-                          child: Row(
-                            children: const [
-                              Text(
-                                " เสร็จสิ้นภาระกิจ ",
-                                style: TextStyle(fontSize: 20),
+                        SafeArea(
+                          child: Center(
+                            child: Container(
+                              margin: const EdgeInsets.all(0),
+                              child: OutlineButton(
+                                child: const Text(
+                                  "                เสร็จสิ้นภารกิจ                ",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Color.fromARGB(255, 0, 0, 0)),
+                                ),
+                                splashColor:
+                                    const Color.fromARGB(255, 241, 172, 112),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                onPressed: () {
+                                  Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const Homepage_mec();
+                                  }));
+                                },
                               ),
-                            ],
+                            ),
                           ),
                         ),
                         Container(

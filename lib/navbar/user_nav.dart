@@ -1,6 +1,6 @@
 import 'package:changrode/user/homeuser/home.dart';
 import 'package:changrode/user/set/profile_user.dart';
-import 'package:changrode/user/search/search.dart';
+import 'package:changrode/user/Search/Search.dart';
 import 'package:changrode/mechanic/setting/setting.dart';
 import 'package:changrode/user/homeuser/home.dart';
 import 'package:changrode/user/set/setuser.dart';
@@ -29,20 +29,26 @@ class _HomepageState extends State<Homepage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,
-            color: Colors.orange,
-                size: 35,),
+            icon: Icon(
+              Icons.home,
+              color: Colors.orange,
+              size: 35,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search,
-                size: 35,),
+            icon: Icon(
+              Icons.search,
+              size: 35,
+            ),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings,
-            color: Colors.red,
-            size: 35,),
+            icon: Icon(
+              Icons.settings,
+              color: Colors.red,
+              size: 35,
+            ),
             label: 'Setting',
           ),
         ],

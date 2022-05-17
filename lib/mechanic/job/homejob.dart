@@ -17,11 +17,76 @@ class jobhome extends StatelessWidget {
         children: [
           Container(
             width: 500,
-            height: 400,
-            margin: const EdgeInsets.only(top: 0),
+            height: 375,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
                 color: const Color.fromARGB(255, 226, 124, 0)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 40,
+                ),
+                Row(
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                    ),
+                    Text(
+                      " Welcome to Motocare : ) ",
+                      style: TextStyle(fontSize: 27, color: Colors.white),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Row(
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                        ),
+                        Text(
+                          "  ยินดีต้อนรับเข้าสู่ Motocare : ) ",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 224, 224, 224)),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            Column(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(bottom: 135),
+                                ),
+                                Image.network(
+                                  'https://cdn.discordapp.com/attachments/975031843344748556/975808446966427768/1234.png',
+                                  fit: BoxFit.cover,
+                                  height: 130,
+                                  width: 130,
+                                ),
+                              ],
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 80),
+                            ),
+                            Image.network(
+                              'https://cdn.discordapp.com/attachments/531143215508881411/968111279405432922/LOGO1.png',
+                              fit: BoxFit.cover,
+                              height: 180,
+                              width: 180,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
           Container(
             width: 500,
@@ -107,7 +172,7 @@ class jobhome extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return Job_one();
+                          return JobOne();
                         }));
                       },
                     ),

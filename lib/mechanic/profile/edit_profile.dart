@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:changrode/navbar/mec_nav.dart';
 import 'package:changrode/mechanic/job/homejob.dart';
 import 'package:changrode/mechanic/profile/profile_mec.dart';
@@ -74,7 +76,7 @@ class Edit_profile extends StatelessWidget {
                               fillColor: Colors.white,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40)),
-                              hintText: 'ชื่อ'),
+                              hintText: 'วันเวลา'),
                         ),
                         Container(
                           padding: const EdgeInsets.all(10),
@@ -110,38 +112,45 @@ class Edit_profile extends StatelessWidget {
                               borderRadius: BorderRadius.circular(0),
                               color: Colors.white),
                           child: Row(
-                            children:  const [
+                            children: const [
                               Text(
                                 " แก้ไขสถานที่ ",
                                 style: TextStyle(fontSize: 18),
-                                
                               ),
-                              Icon(Icons.location_on, size: 20, color: Colors.red),
+                              Icon(Icons.location_on,
+                                  size: 20, color: Colors.red),
                             ],
                           ),
                         ),
                         Container(
                           padding: const EdgeInsets.all(20),
                         ),
-                        
-                        
-                        ElevatedButton.icon(
-                          icon: const Icon(Icons.ac_unit),
-                          style: ElevatedButton.styleFrom(
-                            shape: const StadiumBorder(),
-                            onPrimary: Colors.white,
+                        SafeArea(
+                          child: Center(
+                            child: Container(
+                              margin: const EdgeInsets.all(0),
+                              child: OutlineButton(
+                                child: const Text(
+                                  "                เสร็จสิ้น                ",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      color:
+                                          Color.fromARGB(255, 255, 255, 255)),
+                                ),
+                                splashColor:
+                                    const Color.fromARGB(255, 241, 172, 112),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                onPressed: () {
+                                  Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const Homepage_mec();
+                                  }));
+                                },
+                              ),
+                            ),
                           ),
-                          label: const Text("ยืนยัน",
-                              style: TextStyle(fontSize: 20)),
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return const Homepage_mec();
-                            }));
-                          },
                         ),
-                       
-                        
                       ],
                     )))));
   }

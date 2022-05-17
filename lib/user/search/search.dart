@@ -2,7 +2,9 @@ import 'package:changrode/model/machanic.dart';
 import 'package:changrode/user/appointment/appoint1.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../login_control.dart';
 
+// ignore: camel_case_types
 class search extends StatefulWidget {
   const search({Key? key}) : super(key: key);
 
@@ -10,9 +12,12 @@ class search extends StatefulWidget {
   State<search> createState() => _searchState();
 }
 
+// ignore: camel_case_types
 class _searchState extends State<search> {
   late Future<List<Machanic>> machanicchoose = Future.value([]);
   late List<Machanic> value;
+  final controller = Get.put(LoginController());
+
   @override
   void initState() {
     machanicchoose = Getmachanic();
@@ -29,6 +34,8 @@ class _searchState extends State<search> {
         ),
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                   child: FutureBuilder<List<Machanic>>(
@@ -44,20 +51,21 @@ class _searchState extends State<search> {
                             itemCount: value.length,
                             itemBuilder: (context, index) {
                               return ListTile(
-                                
                                   title: TextButton.icon(
-                                      onPressed: () {
-                                        Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return Appointment();
-                            }));
-                                      },
-                                      icon: Image.network(
-                                        'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png',
-                                        height: 32,
-                                        width: 32,
-                                      ),
-                                      label: Text(value[index].mfName)));
+                                onPressed: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const Appointment();
+                                  }));
+                                },
+                                icon: Image.network(
+                                  controller.googleAccount.value?.photoUrl ??
+                                      '',
+                                  height: 100,
+                                  width: 100,
+                                ),
+                                label: Text(value[index].mfName),
+                              ));
                             },
                           );
                         }

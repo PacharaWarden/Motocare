@@ -1,27 +1,52 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:convert';
+
 import 'package:changrode/user/appointment/appoint_review.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Appointed extends StatefulWidget {
-  Appointed({Key? key}) : super(key: key);
+  const Appointed({Key? key}) : super(key: key);
 
   @override
   State<Appointed> createState() => _AppointedState();
 }
 
 class _AppointedState extends State<Appointed> {
-  DateTime date = DateTime(2022, 01, 01);
-  TimeOfDay time = const TimeOfDay(hour: 00, minute: 00);
+  TextEditingController location = new TextEditingController();
+  TextEditingController jobdetail = new TextEditingController();
 
+  Future createappointment() async {
+    const String path = "http://192.168.1.111:8000/createappointment";
+
+    Map<String, dynamic> args = {
+      "jobDescription": jobdetail.toString(),
+      "location": location.toString()
+    };
+
+    var body = jsonEncode(args);
+    print(args);
+
+    final res = await http.post(Uri.parse(path),
+        body: body,
+        headers: {'Content-Type': 'application/json', 'Accept': '/'});
+    print(res.body);
+    if (res.statusCode == 200) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return const ReviewUser();
+      }));
+    } else {
+      throw Exception("False to create");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
-          backgroundColor:const Color.fromARGB(255, 255, 255, 255),
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           title: const Text(' Edit Profile '),
         ),
         body: SafeArea(
@@ -72,7 +97,6 @@ class _AppointedState extends State<Appointed> {
                         Container(
                           padding: const EdgeInsets.all(5),
                         ),
-                        
                         Container(
                           padding: const EdgeInsets.all(15),
                         ),
@@ -84,20 +108,24 @@ class _AppointedState extends State<Appointed> {
                                   fontSize: 20,
                                   color: Color.fromARGB(255, 0, 0, 0)),
                             ),
-                            
                           ],
                         ),
                         Container(
                           padding: const EdgeInsets.all(5),
                         ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            filled: false,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(0)),
-                            hintText: ' ',
-                          ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              height: 50,
+                              width: 300,
+                              child: Row(
+                                children: [
+                                  Text('$jobdetail',
+                                      style: const TextStyle(fontSize: 5))
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                         Container(
                           padding: const EdgeInsets.all(5),
@@ -114,8 +142,6 @@ class _AppointedState extends State<Appointed> {
                             ),
                           ],
                         ),
-                        
-                        
                         TextFormField(
                           decoration: InputDecoration(
                             filled: false,
@@ -128,28 +154,26 @@ class _AppointedState extends State<Appointed> {
                         Container(
                           padding: const EdgeInsets.all(10),
                         ),
-                        
-                        
                         SafeArea(
                           child: Center(
                             child: Container(
                               margin: const EdgeInsets.all(25),
                               child: OutlineButton(
                                 child: const Text(
-                                  "นัดหมายวันใช้บริการ",
+                                  "                   ",
                                   style: TextStyle(
                                       fontSize: 20.0,
                                       color: Color.fromARGB(255, 165, 107, 0)),
                                 ),
                                 highlightColor:
-                                  const Color.fromARGB(255, 244, 155, 54),
+                                    const Color.fromARGB(255, 244, 155, 54),
                                 disabledBorderColor: Colors.black,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15)),
                                 onPressed: () {
                                   Navigator.pushReplacement(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return Review_User();
+                                    return const ReviewUser();
                                   }));
                                 },
                               ),
